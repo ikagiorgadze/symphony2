@@ -91,7 +91,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
               <img 
                 src="/symphony-logo.svg" 
                 alt="Symphony" 
-                className="h-8 w-auto"
+                className="h-10 w-auto"
               />
             </div>
             <Button 

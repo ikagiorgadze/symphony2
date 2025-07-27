@@ -56,7 +56,7 @@ export function TopBar({ onMobileMenuToggle, isRailCollapsed, onToggleCollapse }
               <img 
                 src="/symphony-logo.svg" 
                 alt="Symphony" 
-                className="h-6 w-auto"
+                className="h-8 w-auto"
               />
             </div>
 
