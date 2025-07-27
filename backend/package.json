@@ -1,0 +1,28 @@
+{
+  "name": "symphony-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot integration for Symphony Hotel PMS",
+  "main": "telegram-webhook.js",
+  "scripts": {
+    "start": "node telegram-webhook.js",
+    "dev": "nodemon telegram-webhook.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "ws": "^8.14.2",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.2"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "hotel",
+    "pms",
+    "websocket"
+  ],
+  "author": "Symphony PMS",
+  "license": "MIT"
+} 

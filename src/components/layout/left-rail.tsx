@@ -12,11 +12,15 @@ import {
   ChevronRight,
   Hotel,
   BarChart3,
-  // Globe,
-  // TrendingUp,
+  Globe,
+  TrendingUp,
   MessageSquare,
-  // KeyRound,
-  Shuffle
+  KeyRound,
+  Shuffle,
+  Brain,
+  CreditCard,
+  DollarSign,
+  Shield
 } from "lucide-react"
 import { IconButton } from "@/components/ui/icon-button"
 import { cn } from "@/lib/utils"
@@ -31,13 +35,18 @@ const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard, color: "text-blue-400" },
   { name: "Workflows", href: "/workflows", icon: Shuffle, color: "text-indigo-400" },
   { name: "PMS", href: "/pms", icon: Calendar, color: "text-green-400" },
+  { name: "Guest Intelligence", href: "/guest-intelligence", icon: Brain, color: "text-pink-500" },
   { name: "CRM", href: "/crm", icon: Users, color: "text-purple-400" },
-  { name: "POS", href: "/pos", icon: ShoppingCart, color: "text-orange-400" },
+  { name: "Booking Engine", href: "/booking-engine", icon: Globe, color: "text-blue-500" },
+  { name: "Revenue Management", href: "/revenue-management", icon: TrendingUp, color: "text-green-500" },
   { name: "Channel Manager", href: "/channel-manager", icon: Shuffle, color: "text-indigo-400" },
+  { name: "POS", href: "/pos", icon: ShoppingCart, color: "text-orange-400" },
+  { name: "Payment Gateway", href: "/payment-gateway", icon: CreditCard, color: "text-emerald-500" },
   { name: "OTA", href: "/ota", icon: Wifi, color: "text-cyan-400" },
+  { name: "Access Control", href: "/access-control", icon: KeyRound, color: "text-red-500" },
   { name: "Housekeeping", href: "/housekeeping", icon: Sparkles, color: "text-pink-400" },
+  { name: "Guest Experience", href: "/guest-experience", icon: MessageSquare, color: "text-violet-400" },
   { name: "Finance", href: "/finance", icon: Calculator, color: "text-emerald-400" },
-          { name: "Guest Experience", href: "/guest-experience", icon: MessageSquare, color: "text-violet-400" },
   { name: "Analytics", href: "/analytics", icon: BarChart3, color: "text-indigo-400" },
   { name: "Admin", href: "/admin", icon: Settings, color: "text-gray-400" },
 ]
