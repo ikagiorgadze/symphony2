@@ -51,6 +51,15 @@ export function TopBar({ onMobileMenuToggle, isRailCollapsed, onToggleCollapse }
               <Menu className="h-4 w-4" />
             </Button>
 
+            {/* Logo for mobile when sidebar is hidden */}
+            <div className="md:hidden flex items-center">
+              <img 
+                src="/symphony-logo.svg" 
+                alt="Symphony" 
+                className="h-6 w-auto"
+              />
+            </div>
+
             {/* Desktop Rail Toggle */}
             <Button
               variant="ghost"

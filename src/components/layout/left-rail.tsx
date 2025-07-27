@@ -10,7 +10,6 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
-  Hotel,
   BarChart3,
   Globe,
   TrendingUp,
@@ -62,11 +61,12 @@ export function LeftRail({ isCollapsed, onToggleCollapse }: Readonly<LeftRailPro
       {/* Header */}
       <div className="h-16 flex items-center justify-between px-4 border-b border-sidebar-border">
         {!isCollapsed && (
-          <div className="flex items-center space-x-2">
-            <Hotel className="h-8 w-8 text-sidebar-primary" />
-            <span className="text-lg font-display font-semibold text-sidebar-foreground">
-              Symphony
-            </span>
+          <div className="flex items-center">
+            <img 
+              src="/symphony-logo.svg" 
+              alt="Symphony" 
+              className="h-8 w-auto"
+            />
           </div>
         )}
         <IconButton

@@ -87,13 +87,12 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
       <SheetContent side="left" className="w-80 p-0">
         <SheetHeader className="p-6 pb-3 border-b border-border">
           <div className="flex items-center justify-between">
-            <div>
-              <SheetTitle className="text-xl font-display font-bold">
-                Symphony
-              </SheetTitle>
-              <p className="text-sm text-muted-foreground mt-1">
-                Hospitality Platform
-              </p>
+            <div className="flex items-center">
+              <img 
+                src="/symphony-logo.svg" 
+                alt="Symphony" 
+                className="h-8 w-auto"
+              />
             </div>
             <Button 
               variant="ghost" 
