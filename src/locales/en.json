@@ -1,0 +1,17 @@
+{
+  "dashboard": "Dashboard",
+  "workflows": "Workflows",
+  "pms": "PMS",
+  "crm": "CRM",
+  "pos": "POS",
+  "channelManager": "Channel Manager",
+  "ota": "OTA",
+  "housekeeping": "Housekeeping",
+  "finance": "Finance",
+  "guestExperience": "Guest Experience",
+  "analytics": "Analytics",
+  "admin": "Admin",
+  "language": "Language",
+  "georgian": "Georgian",
+  "english": "English"
+}

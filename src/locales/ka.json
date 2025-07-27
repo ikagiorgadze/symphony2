@@ -1,0 +1,17 @@
+{
+  "dashboard": "დაფა",
+  "workflows": "სამუშაო პროცესები",
+  "pms": "PMS",
+  "crm": "CRM",
+  "pos": "POS",
+  "channelManager": "არხების მენეჯერი",
+  "ota": "OTA",
+  "housekeeping": "დასუფთავება",
+  "finance": "ფინანსები",
+  "guestExperience": "სტუმრის გამოცდილება",
+  "analytics": "ანალიტიკა",
+  "admin": "ადმინი",
+  "language": "ენა",
+  "georgian": "ქართული",
+  "english": "ინგლისური"
+}

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api-specification xmlns="http://hotel-management.com/api-spec" version="1.0">
+  <info>
+    <title>Hotel Management System API</title>
+    <description>Backend API endpoints for hotel management dashboard</description>
+    <version>1.0.0</version>
+    <baseUrl>https://api.hotelmanagement.com/v1</baseUrl>
+  </info>
+  
+  <endpoints>
+    <!-- Dashboard Metrics -->
+    <endpoint>
+      <path>/metrics/dashboard</path>
+      <method>GET</method>
+      <description>Get dashboard metrics including occupancy, arrivals, revenue, and ADR</description>
+      <response>
+        <content-type>application/json</content-type>
+        <schema>
+          <occupancy>
+            <current type="string">87%</current>
+            <change type="string">+5% vs yesterday</change>
+            <trend type="enum">up|down|flat</trend>
+          </occupancy>
+          <arrivals>
+            <remaining type="integer">23</remaining>
+            <checkedIn type="integer">12</checkedIn>
+          </arrivals>
+          <revenue>
+            <today type="string">$12,847</today>
+            <change type="string">+12% vs last week</change>
+            <trend type="enum">up|down|flat</trend>
+          </revenue>
+          <adr>
+            <current type="string">$148</current>
+            <change type="string">+$8 vs last month</change>
+            <trend type="enum">up|down|flat</trend>
+          </adr>
+        </schema>
+      </response>
+    </endpoint>
+
+    <!-- System Alerts -->
+    <endpoint>
+      <path>/alerts</path>
+      <method>GET</method>
+      <description>Get current system alerts and notifications</description>
+      <response>
+        <content-type>application/json</content-type>
+        <schema type="array">
+          <alert>
+            <id type="string">unique_id</id>
+            <type type="enum">warning|success|info|error</type>
+            <message type="string">Alert message</message>
+            <priority type="enum">high|medium|low</priority>
+            <count type="integer">3</count>
+            <timestamp type="datetime">2025-07-26T10:00:00Z</timestamp>
+            <resolved type="boolean">false</resolved>
+          </alert>
+        </schema>
+      </response>
+    </endpoint>
+
+    <!-- Guest Requests -->
+    <endpoint>
+      <path>/guest-requests</path>
+      <method>GET</method>
+      <description>Get guest requests from chatbot interactions</description>
+      <parameters>
+        <parameter name="status" type="query">
+          <type>enum</type>
+          <values>pending|in-progress|resolved</values>
+        </parameter>
+        <parameter name="priority" type="query">
+          <type>enum</type>
+          <values>high|medium|low</values>
+        </parameter>
+      </parameters>
+      <response>
+        <content-type>application/json</content-type>
+        <schema type="array">
+          <request>
+            <id type="string">unique_id</id>
+            <guestName type="string">John Doe</guestName>
+            <roomNumber type="string">204</roomNumber>
+            <intent type="string">room_service</intent>
+            <message type="string">Request description</message>
+            <priority type="enum">high|medium|low</priority>
+            <status type="enum">pending|in-progress|resolved</status>
+            <timestamp type="datetime">2025-07-26T10:00:00Z</timestamp>
+            <assignedTo type="string">staff_member_id</assignedTo>
+            <department type="string">housekeeping</department>
+          </request>
+        </schema>
+      </response>
+    </endpoint>
+
+    <endpoint>
+      <path>/guest-requests</path>
+      <method>POST</method>
+      <description>Create a new guest request</description>
+      <request>
+        <content-type>application/json</content-type>
+        <schema>
+          <guestName type="string">John Doe</guestName>
+          <roomNumber type="string">204</roomNumber>
+          <intent type="string">room_service</intent>
+          <message type="string">Request description</message>
+          <priority type="enum">high|medium|low</priority>
+        </schema>
+      </request>
+      <response>
+        <status>201</status>
+        <description>Request created successfully</description>
+      </response>
+    </endpoint>
+
+    <endpoint>
+      <path>/guest-requests/{id}</path>
+      <method>PATCH</method>
+      <description>Update guest request status or assignment</description>
+      <parameters>
+        <parameter name="id" type="path" required="true">
+          <type>string</type>
+        </parameter>
+      </parameters>
+      <request>
+        <content-type>application/json</content-type>
+        <schema>
+          <status type="enum">pending|in-progress|resolved</status>
+          <assignedTo type="string">staff_member_id</assignedTo>
+          <notes type="string">Update notes</notes>
+        </schema>
+      </request>
+      <response>
+        <status>200</status>
+        <description>Request updated successfully</description>
+      </response>
+    </endpoint>
+
+    <!-- System Performance -->
+    <endpoint>
+      <path>/system/performance</path>
+      <method>GET</method>
+      <description>Get system performance metrics</description>
+      <response>
+        <content-type>application/json</content-type>
+        <schema>
+          <systemPerformance>
+            <uptime type="number">94</uptime>
+            <status type="string">Excellent</status>
+          </systemPerformance>
+          <responseTime>
+            <average type="number">120</average>
+            <status type="string">Fast</status>
+          </responseTime>
+          <taskCompletion>
+            <percentage type="number">85</percentage>
+            <status type="string">On Track</status>
+          </taskCompletion>
+        </schema>
+      </response>
+    </endpoint>
+
+    <!-- Routing Information -->
+    <endpoint>
+      <path>/routing/active</path>
+      <method>GET</method>
+      <description>Get active routing requests and flows</description>
+      <response>
+        <content-type>application/json</content-type>
+        <schema>
+          <activeRequests type="array">
+            <request>
+              <id type="string">req_id</id>
+              <source type="string">source_service</source>
+              <destination type="string">destination_service</destination>
+              <method type="string">GET</method>
+              <status type="string">active</status>
+              <responseTime type="number">150</responseTime>
+            </request>
+          </activeRequests>
+          <routingRules type="array">
+            <rule>
+              <path type="string">/api/v1/guests</path>
+              <handler type="string">guest_service</handler>
+              <status type="string">healthy</status>
+            </rule>
+          </routingRules>
+        </schema>
+      </response>
+    </endpoint>
+
+    <!-- Notifications -->
+    <endpoint>
+      <path>/notifications</path>
+      <method>GET</method>
+      <description>Get user notifications</description>
+      <response>
+        <content-type>application/json</content-type>
+        <schema type="array">
+          <notification>
+            <id type="string">notif_id</id>
+            <title type="string">Notification Title</title>
+            <message type="string">Notification message</message>
+            <type type="enum">info|warning|success|error</type>
+            <timestamp type="datetime">2025-07-26T10:00:00Z</timestamp>
+            <read type="boolean">false</read>
+          </notification>
+        </schema>
+      </response>
+    </endpoint>
+
+    <!-- User Authentication -->
+    <endpoint>
+      <path>/auth/profile</path>
+      <method>GET</method>
+      <description>Get current user profile information</description>
+      <authentication>Bearer Token</authentication>
+      <response>
+        <content-type>application/json</content-type>
+        <schema>
+          <id type="string">user_id</id>
+          <name type="string">John Doe</name>
+          <email type="string">john@hotel.com</email>
+          <role type="string">manager</role>
+          <avatar type="string">avatar_url</avatar>
+          <permissions type="array">
+            <permission type="string">dashboard.view</permission>
+            <permission type="string">guests.manage</permission>
+          </permissions>
+        </schema>
+      </response>
+    </endpoint>
+  </endpoints>
+
+  <authentication>
+    <type>Bearer Token</type>
+    <description>JWT token required for authenticated endpoints</description>
+    <header>Authorization: Bearer {token}</header>
+  </authentication>
+
+  <error-codes>
+    <error code="400">Bad Request - Invalid request parameters</error>
+    <error code="401">Unauthorized - Missing or invalid authentication</error>
+    <error code="403">Forbidden - Insufficient permissions</error>
+    <error code="404">Not Found - Resource does not exist</error>
+    <error code="500">Internal Server Error - Server error occurred</error>
+  </error-codes>
+</api-specification>
